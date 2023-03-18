@@ -11,7 +11,7 @@ public class Board {
         }
         int i = Integer.parseInt(number.substring(0,number.indexOf(",")));
         int x = Integer.parseInt(number.substring(number.indexOf(",")+1));
-        while (i >= 5 || i < 0 || x>=5 || x>=5) {
+        while (i >= 5 || i < 0 || x>=5 || x<0) {
             System.out.println("Invalid number");
             number = scan.nextLine();
             i = Integer.parseInt(number.substring(0,number.indexOf(",")));
@@ -40,10 +40,9 @@ public class Board {
                 if (boards[row][col] != 0) {
                     System.out.println("Invalid move");
                     while (boards[row][col] != 0) {
-                        System.out.println("Please pick a row:");
-                        check(scan);
-                        System.out.println("Please pick a col: ");
-                        check(scan);
+                        int[] change = check(scan);
+                        row = change[0];
+                        col = change[1];
                     }
                 }
                 boards[row][col] = nums;
